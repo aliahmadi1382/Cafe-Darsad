@@ -1,0 +1,260 @@
+/* Darsad motion: small distances, deliberate feedback, no layout shifts. */
+:root {
+  --motion-fast: 160ms;
+  --motion-soft: 280ms;
+  --motion-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.button,
+.icon,
+.tabs button,
+.menu-group-list button,
+.finder-options button,
+.mega-featured,
+.mega-guide,
+.finder-restart,
+.quantity button {
+  transition:
+    transform var(--motion-fast) var(--motion-ease),
+    background-color var(--motion-fast),
+    color var(--motion-fast),
+    border-color var(--motion-fast),
+    box-shadow var(--motion-soft);
+}
+.button svg,
+.menu-link svg,
+.text-link svg,
+.tasting-content > button svg,
+.mega-categories img,
+.mega-featured img,
+.mega-guide > svg:last-child,
+.brand-symbol,
+.shop-nav-trigger svg,
+.header-actions svg {
+  transition: transform var(--motion-soft) var(--motion-ease);
+}
+.collection img,
+.product-photo .image-button img,
+.story-image img,
+.tasting-photo img,
+.menu-editorial-photo img {
+  transition:
+    transform 420ms var(--motion-ease),
+    filter var(--motion-soft);
+}
+.product {
+  transition: transform var(--motion-soft) var(--motion-ease);
+}
+.product-photo {
+  overflow: hidden;
+}
+.product-title,
+footer a,
+footer button,
+.menu-link,
+.text-link {
+  transition:
+    color var(--motion-fast),
+    opacity var(--motion-fast);
+}
+.search-box,
+.menu-search,
+input,
+select,
+textarea {
+  transition:
+    border-color var(--motion-fast),
+    box-shadow var(--motion-fast),
+    background-color var(--motion-fast);
+}
+input:focus,
+select:focus,
+textarea:focus,
+.menu-search:focus-within {
+  border-color: #9a6b49;
+  box-shadow: 0 0 0 3px #9a6b4914;
+}
+.drink {
+  transition: background-color var(--motion-fast);
+  border-radius: 5px;
+}
+.drink-icon {
+  transition:
+    transform var(--motion-soft),
+    background-color var(--motion-fast);
+}
+.finder-invite .button:focus-visible,
+.button:focus-visible {
+  box-shadow: 0 5px 14px #4b271d20;
+}
+button:not(:disabled):active,
+a.button:active {
+  transform: scale(0.98);
+}
+button:disabled {
+  transform: none;
+}
+dialog[open] {
+  animation: dialog-arrive 220ms var(--motion-ease);
+}
+dialog[open]::backdrop {
+  animation: backdrop-arrive 180ms ease-out;
+}
+.finder-result,
+.finder-added,
+.menu-empty {
+  animation: content-arrive 220ms var(--motion-ease);
+}
+header nav.open {
+  animation: content-arrive 180ms var(--motion-ease);
+}
+@keyframes dialog-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes backdrop-arrive {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes content-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  .button:not(:disabled):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px #4b271d1a;
+  }
+  .button:hover svg,
+  .menu-link:hover svg,
+  .text-link:hover svg {
+    transform: translateX(-3px);
+  }
+  .icon:hover {
+    transform: translateY(-2px);
+  }
+  .header-actions .icon:hover svg {
+    transform: scale(1.08);
+  }
+  .brand:hover .brand-symbol {
+    transform: rotate(-7deg);
+  }
+  .collection:hover img {
+    transform: scale(1.035);
+  }
+  .product:hover {
+    transform: translateY(-3px);
+  }
+  .product-photo .image-button:hover img {
+    transform: scale(1.04);
+  }
+  .product-title:hover,
+  footer a:hover,
+  footer button:hover {
+    color: #965336;
+  }
+  .tabs button:hover,
+  .menu-group-list button:hover {
+    transform: translateY(-1px);
+  }
+  .tasting-content > button:hover svg {
+    transform: translate(-2px, -2px);
+  }
+  .mega-categories a:hover img {
+    transform: translateY(-3px);
+  }
+  header nav .mega-featured:hover {
+    background: #e6d8be;
+    transform: translateY(-2px);
+  }
+  header nav .mega-guide:hover {
+    background: #623326;
+  }
+  .mega-guide:hover > svg:last-child {
+    transform: translate(-3px, -3px);
+  }
+  .finder-options button:hover {
+    border-color: #9a6b49;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px #4b271d0d;
+  }
+  .drink:hover {
+    background: #9a6b4907;
+  }
+  .drink:hover .drink-icon {
+    transform: rotate(-5deg);
+    background: #e6d8be;
+  }
+  .quantity button:hover {
+    background: #eee5d5;
+  }
+  .finder-restart:hover {
+    color: #965336;
+  }
+  .story-image:hover img,
+  .tasting-photo:hover img,
+  .menu-editorial-photo:hover img {
+    transform: scale(1.025);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .button:hover,
+  .icon:hover,
+  .product:hover,
+  .collection:hover img,
+  .product-photo .image-button:hover img,
+  .finder-options button:hover,
+  .mega-categories a:hover img,
+  header nav .mega-featured:hover,
+  .tabs button:hover,
+  .menu-group-list button:hover,
+  .drink:hover .drink-icon,
+  .story-image:hover img,
+  .tasting-photo:hover img,
+  .menu-editorial-photo:hover img,
+  .brand:hover .brand-symbol,
+  button:not(:disabled):active,
+  a.button:active,
+  .button:hover svg,
+  .menu-link:hover svg,
+  .text-link:hover svg,
+  .header-actions .icon:hover svg,
+  .tasting-content > button:hover svg,
+  .mega-guide:hover > svg:last-child {
+    transform: none;
+  }
+}
+.tasting-photo {
+  overflow: hidden;
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .button:not(:disabled):active,
+  .icon:active,
+  .finder-options button:active {
+    transform: scale(0.98);
+  }
+}

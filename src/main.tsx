@@ -6,6 +6,7 @@ import "./styles.css";
 import "./brand.css";
 import "./polish.css";
 import "./navigation.css";
+import "./motion.css";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <App />
