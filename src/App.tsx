@@ -17,6 +17,8 @@ import {
 } from "lucide-react";
 import { products as initial, categories, menu, money, Product } from "./data";
 import CafeMenu from "./components/CafeMenu";
+import CoffeeFinder from "./components/CoffeeFinder";
+import ShopNavigation from "./components/ShopNavigation";
 function read<T>(key: string, fallback: T): T {
   try {
     return JSON.parse(localStorage.getItem(key) || "null") ?? fallback;
@@ -44,7 +46,7 @@ export default function App() {
     { productId: number; name: string; text: string; rating: number }[]
   >("darsad-reviews-v2", []);
   const [panel, setPanel] = useState<
-    "cart" | "favorites" | "menu" | "admin" | "product" | null
+    "cart" | "favorites" | "menu" | "admin" | "product" | "finder" | null
   >(null);
   const [selected, setSelected] = useState<Product | null>(null);
   const [category, setCategory] = useState(categories[0]);
@@ -148,9 +150,30 @@ export default function App() {
           </span>
         </a>
         <nav className={mobile ? "open" : ""} aria-label="ناوبری اصلی">
-          <a href="#shop" onClick={() => setMobile(false)}>
-            فروشگاه
-          </a>
+          <ShopNavigation
+            featured={products.find((p) => p.id === 1)}
+            onProduct={(p) => {
+              setMobile(false);
+              openProduct(p);
+            }}
+            onCategory={(c) => {
+              setCategory(c);
+              setQuery("");
+              setMobile(false);
+            }}
+            onGuide={() => {
+              setMobile(false);
+              setPanel("finder");
+            }}
+          />
+          <button
+            onClick={() => {
+              setMobile(false);
+              setPanel("finder");
+            }}
+          >
+            راهنمای قهوه
+          </button>
           <button
             onClick={() => {
               setPanel("menu");
@@ -395,6 +418,19 @@ export default function App() {
             </div>
           )}
         </section>
+        <section className="finder-invite">
+          <Coffee size={34} />
+          <div>
+            <h2>فنجان شما، سلیقه شما.</h2>
+            <p>
+              با چه دستگاهی دم می‌کنی؟ چه طعمی دوست داری؟ با دو انتخاب، قهوه‌ات
+              را پیدا کن.
+            </p>
+          </div>
+          <button className="button copper" onClick={() => setPanel("finder")}>
+            پیدا کردن قهوه من <ArrowLeft size={18} />
+          </button>
+        </section>
         <section id="story" className="story">
           <div className="story-image">
             <img
@@ -508,7 +544,13 @@ export default function App() {
         </small>
       </footer>
       <dialog
-        className={panel === "menu" ? "menu-dialog" : undefined}
+        className={
+          panel === "menu"
+            ? "menu-dialog"
+            : panel === "finder"
+              ? "finder-dialog"
+              : undefined
+        }
         aria-labelledby="dialog-title"
         ref={dialog}
         onCancel={() => setPanel(null)}
@@ -516,15 +558,17 @@ export default function App() {
       >
         <div className="dialog-header">
           <h2 id="dialog-title">
-            {panel === "cart"
-              ? "سبد خرید"
-              : panel === "favorites"
-                ? "علاقه‌مندی‌های شما"
-                : panel === "menu"
-                  ? "منوی کافه درصد"
-                  : panel === "admin"
-                    ? "مدیریت نمایشی"
-                    : selected?.name}
+            {panel === "finder"
+              ? "قهوه مناسب شما"
+              : panel === "cart"
+                ? "سبد خرید"
+                : panel === "favorites"
+                  ? "علاقه‌مندی‌های شما"
+                  : panel === "menu"
+                    ? "منوی کافه درصد"
+                    : panel === "admin"
+                      ? "مدیریت نمایشی"
+                      : selected?.name}
           </h2>
           <button
             className="icon"
@@ -534,6 +578,13 @@ export default function App() {
             <X />
           </button>
         </div>
+        {panel === "finder" && (
+          <CoffeeFinder
+            products={products}
+            onProduct={openProduct}
+            onAdd={add}
+          />
+        )}
         {panel === "cart" && (
           <>
             <p className="notice">
