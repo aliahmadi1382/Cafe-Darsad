@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { products as initial, categories, menu, money, Product } from "./data";
 import CafeMenu from "./components/CafeMenu";
+import CinematicHero from "./components/CinematicHero";
 import CoffeeFinder from "./components/CoffeeFinder";
 import ShopNavigation from "./components/ShopNavigation";
 function read<T>(key: string, fallback: T): T {
@@ -26,6 +27,12 @@ function read<T>(key: string, fallback: T): T {
     return fallback;
   }
 }
+const searchText = (value: string) =>
+  value
+    .replace(/ي/g, "ی")
+    .replace(/ك/g, "ک")
+    .replace(/\u200c/g, " ")
+    .trim();
 function useSaved<T>(key: string, initial: T) {
   const [value, set] = useState<T>(() => read(key, initial));
   useEffect(() => {
@@ -61,8 +68,21 @@ export default function App() {
   const dialog = useRef<HTMLDialogElement>(null);
   const timer = useRef<ReturnType<typeof setTimeout>>();
   useEffect(() => {
-    if (panel) dialog.current?.showModal();
-    else dialog.current?.close();
+    setToast("");
+    clearTimeout(timer.current);
+    if (panel) {
+      dialog.current?.showModal();
+      document.body.style.overflow = "hidden";
+      dialog.current
+        ?.querySelector<HTMLButtonElement>(".dialog-header button")
+        ?.focus();
+    } else {
+      dialog.current?.close();
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [panel]);
   useEffect(() => () => clearTimeout(timer.current), []);
   const notify = (message: string) => {
@@ -84,7 +104,7 @@ export default function App() {
     .filter(
       (p) =>
         (category === categories[0] || p.category === category) &&
-        `${p.name} ${p.note}`.includes(query),
+        searchText(`${p.name} ${p.note}`).includes(searchText(query)),
     )
     .sort((a, b) =>
       sort === "low"
@@ -142,7 +162,11 @@ export default function App() {
         از اولین جرعه، تا آخرین تکه شکلات؛ خوش آمدید به درصد{" "}
         <span>نسخه نمایشی</span>
       </div>
-      <header>
+      <header
+        onKeyDown={(e) => {
+          if (e.key === "Escape") setMobile(false);
+        }}
+      >
         <a className="brand" href="#" aria-label="درصد، صفحه اصلی">
           <span className="brand-symbol">٪</span>
           <span>
@@ -195,7 +219,7 @@ export default function App() {
             aria-label="جست‌وجوی محصولات"
             onClick={() => {
               document.getElementById("shop")?.scrollIntoView();
-              document.getElementById("search")?.focus();
+              document.getElementById("search")?.focus({ preventScroll: true });
             }}
           >
             <Search size={21} />
@@ -219,83 +243,22 @@ export default function App() {
           </button>
           <button
             className="icon mobile-toggle"
-            aria-label="باز کردن منو"
+            aria-label={mobile ? "بستن منو" : "باز کردن منو"}
             aria-expanded={mobile}
             onClick={() => setMobile(!mobile)}
           >
-            <MenuIcon />
+            {mobile ? <X /> : <MenuIcon />}
           </button>
         </div>
       </header>
       <main id="main">
-        <section className="signature-hero">
-          <div className="signature-copy">
-            <div className="place-note">
-              <span className="tiny-percent">٪</span> یک کافه، حوالی پارک پلیس.
-            </div>
-            <h1>
-              کمی قهوه.
-              <br />
-              کمی شکلات.
-              <br />
-              <span className="headline-last">تمامِ حال خوب.</span>
-            </h1>
-            <p>
-              بعضی چیزها را نمی‌شود اندازه گرفت.
-              <br />
-              مثل عطر قهوه، لذت شکلات، یا یک قرار بی‌عجله.
-            </p>
-            <div className="signature-actions">
-              <a className="button copper" href="#shop">
-                طعم خودت را پیدا کن <ArrowLeft size={19} />
-              </a>
-              <button className="menu-link" onClick={() => setPanel("menu")}>
-                امروز در کافه <ArrowUpLeft size={19} />
-              </button>
-            </div>
-            <div className="signature-caption">
-              <span>
-                از دانه تا فنجان،
-                <br />
-                از درصد تا شما.
-              </span>
-              <span className="caption-line" />
-              <span>قهوه · شکلات · تجهیزات</span>
-            </div>
-          </div>
-          <div
-            className="signature-art"
-            aria-label="نشان درصد با ترکیب تصاویر قهوه و شکلات"
-          >
-            <div className="art-orbit" aria-hidden="true" />
-            <div className="art-disc disc-coffee">
-              <img
-                src="./images/coffee.jpg"
-                alt="فنجان قهوه، نیمه اول نشان درصد"
-              />
-              <span>یک جرعه آرامش</span>
-            </div>
-            <div className="percent-stroke" aria-hidden="true">
-              <span>درصد</span>
-            </div>
-            <div className="art-disc disc-chocolate">
-              <img
-                src="./images/chocolate.jpg"
-                alt="تکه‌های شکلات، نیمه دوم نشان درصد"
-              />
-              <span>یک تکه خوشحالی</span>
-            </div>
-            <span className="art-scribble" aria-hidden="true">
-              برای تو، با عشق.
-            </span>
-          </div>
-          <div className="hero-bottom-note">
-            <span>درصدی از روزت را برای خودت نگه دار.</span>
-            <a href="#collections">
-              پایین‌تر، خوش‌طعم‌تر <ArrowLeft size={17} />
-            </a>
-          </div>
-        </section>
+        <CinematicHero
+          onCategory={(c) => {
+            setCategory(c);
+            setQuery("");
+          }}
+          onMenu={() => setPanel("menu")}
+        />
         <section className="values">
           <span>
             <Coffee /> قهوه برای هر سلیقه
@@ -311,7 +274,7 @@ export default function App() {
           <div className="section-heading">
             <div>
               <span className="eyebrow">انتخاب با شما، وسواس با ما.</span>
-              <h2>سه بهانه برای یک حال خوب.</h2>
+              <h2>یک سلیقه. سه دنیا.</h2>
             </div>
             <a href="#shop">
               همه محصولات <ArrowLeft size={18} />
@@ -339,7 +302,10 @@ export default function App() {
                 href="#shop"
                 key={c.name}
                 className="collection"
-                onClick={() => setCategory(c.name)}
+                onClick={() => {
+                  setCategory(c.name);
+                  setQuery("");
+                }}
               >
                 <img
                   loading="lazy"
@@ -361,7 +327,7 @@ export default function App() {
           <div className="section-heading">
             <div>
               <span className="eyebrow">از قفسه‌های درصد</span>
-              <h2>انتخاب بعدی شما اینجاست</h2>
+              <h2>برای فنجان بعدی شما.</h2>
             </div>
             <span className="muted">محصولات و قیمت‌ها نمونه هستند</span>
           </div>
@@ -403,63 +369,6 @@ export default function App() {
               </label>
             </div>
           </div>
-          {category === categories[0] && !query && sort === "default" && (
-            <div className="house-selection">
-              <div className="house-copy">
-                <span className="house-stamp">برشته برای روزهای شما</span>
-                <h3>
-                  یک طعم.
-                  <br />
-                  امضای درصد.
-                </h3>
-                <p>
-                  ترکیب روزانه؛ شکلاتی، متعادل و خوش‌عطر.
-                  <br />
-                  برای اولین فنجان صبح و آخرین مکث عصر.
-                </p>
-                <button
-                  className="button copper"
-                  onClick={() =>
-                    openProduct(products.find((p) => p.id === 1) || products[0])
-                  }
-                >
-                  کشف ترکیب روزانه <ArrowUpLeft size={19} />
-                </button>
-                <small>طرح بسته‌بندی و مشخصات، نمونه پیشنهادی هستند.</small>
-              </div>
-              <div
-                className="bag-stage"
-                aria-label="طرح پیشنهادی بسته‌بندی قهوه درصد"
-              >
-                <span className="stage-word" aria-hidden="true">
-                  درصد
-                </span>
-                <div className="coffee-bag">
-                  <div className="bag-seal" />
-                  <span className="bag-brand">
-                    درصد <b>٪</b>
-                  </span>
-                  <span className="bag-window">
-                    <img
-                      src="./images/beans.jpg"
-                      alt="دانه‌های قهوه ترکیب روزانه"
-                    />
-                  </span>
-                  <div className="bag-label">
-                    <strong>ترکیب روزانه</strong>
-                    <span>شکلاتی · متعادل · خوش‌عطر</span>
-                    <small>۲۵۰ گرم / دانه قهوه</small>
-                  </div>
-                  <div className="bag-bottom" />
-                </div>
-                <span className="bag-caption">
-                  از قفسه درصد،
-                  <br />
-                  به گوشه دنج خانه.
-                </span>
-              </div>
-            </div>
-          )}
           <div className="product-grid">{visible.map(card)}</div>
           {!visible.length && (
             <div className="empty">
@@ -896,13 +805,25 @@ export default function App() {
               ))}
           </>
         )}
+        <div
+          className={"dialog-feedback " + (toast ? "visible" : "")}
+          role="status"
+          aria-live="polite"
+        >
+          {toast && (
+            <>
+              <Check size={17} />
+              {toast}
+            </>
+          )}
+        </div>
       </dialog>
       <div
         className={"toast " + (toast ? "show" : "")}
         role="status"
         aria-live="polite"
       >
-        {toast && (
+        {toast && !panel && (
           <>
             <Check size={18} />
             {toast}
