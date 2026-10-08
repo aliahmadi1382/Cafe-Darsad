@@ -16,6 +16,7 @@ import {
   Star,
 } from "lucide-react";
 import { products as initial, categories, menu, money, Product } from "./data";
+import CafeMenu from "./components/CafeMenu";
 function read<T>(key: string, fallback: T): T {
   try {
     return JSON.parse(localStorage.getItem(key) || "null") ?? fallback;
@@ -424,25 +425,47 @@ export default function App() {
             </a>
           </div>
         </section>
-        <section className="section menu-preview">
-          <div>
+        <section className="section menu-preview" id="cafe-menu">
+          <div className="menu-preview-copy">
             <span className="eyebrow">امروز چه می‌نوشید؟</span>
-            <h2>یک فنجان، به سلیقه شما</h2>
+            <h2>
+              قرار بعدی،
+              <br />
+              یک فنجان در درصد.
+            </h2>
             <p>از اسپرسوی پرقدرت تا لاته نرم و هات‌چاکلت غلیظ.</p>
             <button className="button dark" onClick={() => setPanel("menu")}>
               دیدن منوی کافه <ArrowLeft size={18} />
             </button>
           </div>
-          <div className="menu-lines">
-            {menu.slice(0, 3).map((m) => (
-              <div key={m.name}>
-                <span>
-                  {m.name}
-                  <small>{m.note}</small>
-                </span>
-                <strong>{money(m.price)}</strong>
+          <div className="menu-tasting-card">
+            <div className="tasting-photo">
+              <img
+                loading="lazy"
+                src="./images/coffee.jpg"
+                alt="قهوه در یک فنجان، تصویر نمونه منو"
+              />
+              <span>گرم. آرام. خوش‌عطر.</span>
+            </div>
+            <div className="tasting-content">
+              <div className="tasting-heading">
+                <span>چند طعم برای شروع</span>
+                <Coffee size={18} />
               </div>
-            ))}
+              {menu
+                .filter((m) => ["لاته", "آیس لاته", "موکا"].includes(m.name))
+                .map((m) => (
+                  <button key={m.name} onClick={() => setPanel("menu")}>
+                    <span>
+                      {m.name}
+                      <small>{m.category}</small>
+                    </span>
+                    <strong>{money(m.price)}</strong>
+                    <ArrowUpLeft size={16} />
+                  </button>
+                ))}
+              <p>منوی نمونه؛ قیمت‌ها نیازمند تأیید کافه هستند.</p>
+            </div>
           </div>
         </section>
         <section id="visit" className="visit">
@@ -485,6 +508,7 @@ export default function App() {
         </small>
       </footer>
       <dialog
+        className={panel === "menu" ? "menu-dialog" : undefined}
         aria-labelledby="dialog-title"
         ref={dialog}
         onCancel={() => setPanel(null)}
@@ -624,22 +648,7 @@ export default function App() {
             )}
           </>
         )}
-        {panel === "menu" && (
-          <>
-            <p className="notice">منو و قیمت‌های نمونه؛ نیازمند تأیید کافه</p>
-            <div className="menu-lines">
-              {menu.map((m) => (
-                <div key={m.name}>
-                  <span>
-                    {m.name}
-                    <small>{m.note}</small>
-                  </span>
-                  <strong>{money(m.price)}</strong>
-                </div>
-              ))}
-            </div>
-          </>
-        )}
+        {panel === "menu" && <CafeMenu />}
         {panel === "admin" && (
           <>
             <p className="notice">
@@ -722,7 +731,7 @@ export default function App() {
             >
               افزودن به سبد <ShoppingBag size={18} />
             </button>
-            <h3>نظر شما درباره این محصول</h3>
+            <h3 className="review-heading">نظر شما درباره این محصول</h3>
             <p className="muted">نظرات آزمایشی به‌صورت محلی ذخیره می‌شوند.</p>
             <form
               className="review"

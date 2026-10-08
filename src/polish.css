@@ -1,0 +1,902 @@
+/* Shared finish: softer controls, clearer hierarchy, and a dedicated café menu. */
+header {
+  height: 86px;
+}
+.brand {
+  font-size: 31px;
+}
+.brand-symbol {
+  font-size: 49px;
+}
+header nav {
+  gap: 28px;
+}
+header nav a,
+header nav button {
+  position: relative;
+}
+header nav a:after,
+header nav button:after {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  right: 0;
+  left: 0;
+  height: 2px;
+  background: var(--copper);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.2s;
+}
+header nav a:hover:after,
+header nav button:hover:after {
+  transform: scaleX(1);
+}
+.header-actions {
+  gap: 5px;
+}
+.header-actions .icon {
+  border: 1px solid transparent;
+}
+.header-actions .icon:hover {
+  border-color: #cdbc9f;
+  background: #eaddc7;
+}
+.button {
+  border-radius: 6px;
+  transition:
+    background 0.2s,
+    box-shadow 0.2s;
+}
+.button:hover {
+  transform: none;
+  box-shadow: 0 4px 12px #49251e15;
+}
+.signature-actions .copper {
+  border-radius: 6px;
+}
+.signature-copy h1 {
+  line-height: 1.5;
+}
+.headline-last:after {
+  height: 5px;
+  bottom: 1px;
+}
+.signature-art .art-disc {
+  box-shadow: 0 12px 25px #49251e12;
+}
+.art-scribble {
+  font-size: 12px;
+}
+.hero-bottom-note {
+  font-size: 12px;
+}
+.eyebrow {
+  font-size: 12px;
+}
+.section-heading a {
+  min-height: 44px;
+}
+.collection {
+  transition: box-shadow 0.25s;
+}
+.collection:hover {
+  box-shadow: 0 10px 30px #49251e20;
+}
+.collection > span {
+  background: #fff2df15;
+  backdrop-filter: blur(4px);
+}
+.shop-tools {
+  border: 1px solid #e6dac8;
+  background: #f4eddc55;
+  border-radius: 12px;
+  padding: 17px 20px;
+}
+.tabs {
+  margin-bottom: 14px;
+  gap: 7px;
+}
+.tabs button {
+  border-radius: 7px;
+  border-color: transparent;
+  min-height: 44px;
+  padding: 10px 18px;
+  transition: background 0.2s;
+}
+.tabs button:hover {
+  background: #e9dec8;
+}
+.tabs button.selected {
+  background: #49251e;
+  color: #fff2df;
+}
+.filters {
+  align-items: center;
+}
+.search {
+  border: 1px solid #d6c7b0;
+  border-radius: 7px;
+  padding: 0 12px;
+  background: #fffcf5;
+  max-width: 400px;
+  height: 45px;
+}
+.search input {
+  min-height: 42px;
+  padding: 8px 0;
+}
+.sort select {
+  min-height: 44px;
+}
+.product-photo {
+  border-radius: 9px;
+}
+.product {
+  min-width: 0;
+}
+.product-title {
+  font-size: 16px;
+  line-height: 1.8;
+}
+.product p {
+  font-size: 12px;
+  line-height: 1.9;
+}
+.favorite {
+  border-radius: 50%;
+  box-shadow: 0 2px 8px #49251e12;
+}
+.tag {
+  border-radius: 4px;
+  right: 12px;
+  top: 17px;
+  font-size: 10px;
+}
+.add {
+  border-radius: 7px;
+  min-width: 44px;
+  min-height: 44px;
+}
+.add:hover {
+  background: #49251e;
+  color: #fff;
+}
+.product-bottom {
+  padding-top: 13px;
+}
+.product-bottom strong {
+  font-variant-numeric: tabular-nums;
+  font-size: 14px;
+}
+.product-category {
+  font-size: 11px;
+}
+.product-photo:before {
+  bottom: 15px;
+}
+.story-content p {
+  font-size: 14px;
+  line-height: 2.2;
+}
+.story-image span {
+  border-radius: 4px;
+}
+.visit .outline {
+  background: #f4eddc60;
+  border-radius: 6px;
+}
+.visit small {
+  font-size: 12px;
+}
+.visit-mark {
+  font-size: 230px;
+}
+footer {
+  padding-top: 48px;
+}
+footer p {
+  font-size: 13px;
+}
+footer > small {
+  font-size: 11px;
+  line-height: 2;
+}
+footer > div a,
+footer > div button {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+.muted {
+  font-size: 12px;
+}
+dialog {
+  border-radius: 14px;
+  padding: 24px;
+  border: 1px solid #ded0b8;
+}
+dialog::backdrop {
+  background: #24130f99;
+  backdrop-filter: blur(8px);
+}
+.dialog-header {
+  position: sticky;
+  top: -24px;
+  z-index: 5;
+  background: #fbf8ef;
+  margin: -24px -24px 22px;
+  padding: 16px 24px;
+  border-bottom: 1px solid #e6dac8;
+}
+.dialog-header h2 {
+  font-size: 20px;
+  font-weight: 700;
+}
+.dialog-header .icon {
+  background: #eee4d1;
+  border: 1px solid #e0d1b8;
+}
+.notice {
+  border-radius: 6px;
+}
+.cart-row img {
+  border-radius: 6px;
+}
+.quantity button {
+  border-radius: 5px;
+  min-width: 40px;
+  min-height: 40px;
+}
+.quantity span {
+  font-variant-numeric: tabular-nums;
+}
+.coupon input {
+  border-radius: 6px;
+}
+.review input,
+.review textarea,
+.review select {
+  border-radius: 6px;
+}
+.detail-image {
+  border-radius: 9px;
+}
+.admin-stats > div {
+  border-radius: 8px;
+}
+.admin-row {
+  padding: 18px 0;
+  border-bottom: 1px solid #e6dac8;
+}
+.admin-row input {
+  border-radius: 6px;
+}
+.toast {
+  border-radius: 9px;
+  box-shadow: 0 8px 35px #25150f30;
+}
+.review-item {
+  line-height: 1.9;
+}
+.menu-preview {
+  gap: 55px;
+}
+.menu-preview-copy h2 {
+  font-size: 35px;
+  line-height: 1.8;
+  font-weight: 750;
+}
+.menu-preview-copy .button {
+  margin-top: 8px;
+}
+.menu-tasting-card {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  background: #fbf8ef;
+  border: 1px solid #d8c8ae;
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 335px;
+  box-shadow: 0 12px 40px #49302608;
+}
+.tasting-photo {
+  position: relative;
+  background: #49251e;
+  min-height: 335px;
+}
+.tasting-photo img {
+  height: 100%;
+  position: absolute;
+  object-position: center;
+}
+.tasting-photo:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, #49251eb0, transparent 75%);
+}
+.tasting-photo > span {
+  position: absolute;
+  bottom: 23px;
+  right: 15px;
+  left: 15px;
+  color: #fff2df;
+  z-index: 1;
+  text-align: center;
+  font-size: 12px;
+}
+.tasting-content {
+  padding: 24px;
+}
+.tasting-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 11px;
+  color: #8a6549;
+  margin-bottom: 10px;
+}
+.tasting-content > button {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  width: 100%;
+  border-bottom: 1px solid #e1d3bd;
+  padding: 14px 0;
+  text-align: right;
+}
+.tasting-content > button:hover {
+  color: #a45d3a;
+}
+.tasting-content > button > span {
+  flex: 1;
+  white-space: nowrap;
+  font-weight: 650;
+  font-size: 13px;
+}
+.tasting-content small {
+  display: block;
+  font-size: 10px;
+  color: #8b7359;
+  font-weight: 400;
+  margin-top: 4px;
+}
+.tasting-content strong {
+  font-size: 11px;
+  white-space: nowrap;
+  font-weight: 500;
+}
+.tasting-content > p {
+  font-size: 10px;
+  line-height: 1.9;
+  margin: 16px 0 0;
+  color: #8b7359;
+}
+.menu-dialog {
+  width: min(1080px, 95vw);
+  padding: 0;
+  background: #fbf8ef;
+}
+.menu-dialog .dialog-header {
+  top: 0;
+  margin: 0;
+  padding: 15px 25px;
+  background: #fbf8ef;
+}
+.cafe-menu {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 550px;
+}
+.menu-editorial {
+  background: #49251e;
+  color: #f3e7d1;
+  padding: 30px 26px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+.menu-editorial-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #99735450;
+  padding-bottom: 20px;
+}
+.menu-editorial-top > span {
+  font-size: 30px;
+  font-weight: 800;
+}
+.menu-editorial-top svg {
+  color: #cbae8a;
+}
+.menu-editorial h3 {
+  font-size: 32px;
+  line-height: 1.8;
+  margin: 32px 0 13px;
+  letter-spacing: -0.8px;
+}
+.menu-editorial p {
+  color: #d0b497;
+  font-size: 12px;
+  line-height: 2;
+}
+.menu-editorial-photo {
+  height: 235px;
+  border-radius: 130px 130px 6px 6px;
+  overflow: hidden;
+  margin: 14px 0 25px;
+}
+.menu-editorial-photo img {
+  height: 100%;
+  filter: saturate(0.6);
+}
+.menu-editorial-foot {
+  margin-top: auto;
+  font-size: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ceb398;
+  padding-top: 15px;
+  border-top: 1px solid #99735450;
+}
+.menu-browser {
+  padding: 28px 34px;
+}
+.menu-intro > span {
+  font-size: 21px;
+  font-weight: 750;
+}
+.menu-intro p {
+  font-size: 12px;
+  color: #89705a;
+  margin: 7px 0 22px;
+}
+.menu-group-list {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #e2d5bf;
+  padding-bottom: 17px;
+}
+.menu-group-list button {
+  font-size: 12px;
+  padding: 10px 13px;
+  border: 1px solid #ddceb5;
+  border-radius: 25px;
+  min-height: 42px;
+  transition: background 0.2s;
+}
+.menu-group-list button:hover {
+  background: #efe3cf;
+}
+.menu-group-list .chosen {
+  background: #49251e;
+  color: #f3e7d1;
+  border-color: #49251e;
+}
+.menu-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 17px 0;
+  border: 1px solid #deceb7;
+  border-radius: 7px;
+  padding: 0 12px;
+  background: #fffdf7;
+  color: #967455;
+}
+.menu-search input {
+  border: 0;
+  background: none;
+  flex: 1;
+  min-width: 0;
+  font-size: 12px;
+  outline-offset: -2px;
+}
+.menu-search button {
+  font-size: 10px;
+  min-height: 44px;
+  white-space: nowrap;
+}
+.drink {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 1px solid #e5d9c6;
+  padding: 21px 0;
+}
+.drink-icon {
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  background: #eee0c9;
+  color: #825737;
+  border-radius: 13px;
+  flex-shrink: 0;
+}
+.drink-icon.iced {
+  background: #e5e9df;
+  color: #49634f;
+}
+.drink-description {
+  flex: 1;
+  min-width: 0;
+}
+.drink-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.drink-name h4 {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0;
+}
+.drink-name > span {
+  font-size: 9px;
+  background: #ead5b3;
+  color: #6b432c;
+  border-radius: 4px;
+  padding: 3px 7px;
+  white-space: nowrap;
+}
+.drink-description p {
+  font-size: 12px;
+  line-height: 1.8;
+  color: #78614c;
+  margin: 6px 0 2px;
+}
+.drink-description small {
+  font-size: 10px;
+  color: #96765a;
+}
+.drink-price {
+  font-size: 13px;
+  white-space: nowrap;
+  align-self: flex-start;
+  padding-top: 5px;
+  font-weight: 550;
+  font-variant-numeric: tabular-nums;
+}
+.menu-disclaimer {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 10px;
+  line-height: 2;
+  color: #846c54;
+  margin-top: 22px;
+}
+.demo-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #a87446;
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+.menu-empty {
+  text-align: center;
+  padding: 45px 10px;
+  color: #89664c;
+  font-size: 13px;
+}
+.menu-empty svg {
+  margin: auto;
+}
+.menu-empty p {
+  margin: 15px 0;
+}
+.menu-empty button {
+  border-bottom: 1px solid #96765a;
+  padding: 8px;
+  min-height: 44px;
+}
+@media (max-width: 1100px) {
+  .menu-preview {
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 30px;
+  }
+  .menu-preview-copy h2 {
+    font-size: 29px;
+  }
+  .tasting-content {
+    padding: 20px 16px;
+  }
+  .tasting-content > button {
+    gap: 7px;
+  }
+  .tasting-content > button svg {
+    display: none;
+  }
+}
+@media (max-width: 800px) {
+  .menu-preview {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .menu-tasting-card {
+    max-width: 600px;
+  }
+  .cafe-menu {
+    grid-template-columns: 210px 1fr;
+  }
+  .menu-editorial {
+    padding: 25px 20px;
+  }
+  .menu-editorial h3 {
+    font-size: 27px;
+  }
+  .menu-editorial-photo {
+    height: 190px;
+  }
+  .menu-browser {
+    padding: 25px 20px;
+  }
+  .menu-group-list button {
+    font-size: 11px;
+    padding: 9px 11px;
+  }
+  .drink {
+    gap: 10px;
+  }
+  .drink-price {
+    font-size: 12px;
+  }
+  .drink-name h4 {
+    font-size: 14px;
+  }
+  .drink-description p {
+    font-size: 11px;
+  }
+  .drink-icon {
+    width: 36px;
+    height: 36px;
+  }
+}
+@media (max-width: 640px) {
+  header {
+    height: 78px;
+  }
+  .brand {
+    font-size: 27px;
+  }
+  .brand-symbol {
+    font-size: 43px;
+  }
+  nav {
+    top: 78px;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 12px 20px #49251e15;
+  }
+  .header-actions {
+    gap: 1px;
+  }
+  .header-actions .icon {
+    width: 36px;
+  }
+  .hero-bottom-note {
+    font-size: 10px;
+  }
+  .shop-tools {
+    padding: 12px;
+    border-radius: 9px;
+  }
+  .tabs {
+    gap: 4px;
+    margin-bottom: 9px;
+  }
+  .tabs button {
+    padding: 9px 10px;
+    font-size: 11px;
+  }
+  .filters {
+    align-items: stretch;
+    gap: 7px;
+  }
+  .search {
+    max-width: none;
+  }
+  .product-photo {
+    height: 200px;
+  }
+  .tag {
+    top: auto;
+    bottom: 10px;
+    right: 7px;
+    font-size: 8px;
+    max-width: 70%;
+  }
+  .product-photo:before {
+    display: none;
+  }
+  .product-title {
+    font-size: 13px;
+  }
+  .product p {
+    font-size: 11px;
+    margin-bottom: 13px;
+    min-height: 42px;
+  }
+  .product-bottom strong {
+    font-size: 11px;
+  }
+  .product-category {
+    font-size: 10px;
+  }
+  .add {
+    min-width: 40px;
+    min-height: 40px;
+  }
+  .story-content p {
+    font-size: 13px;
+  }
+  .visit small {
+    font-size: 11px;
+  }
+  .section-heading h2 {
+    font-size: 24px;
+  }
+  .menu-preview-copy h2 {
+    font-size: 29px;
+  }
+  .menu-tasting-card {
+    grid-template-columns: 0.85fr 1.15fr;
+    min-height: 300px;
+  }
+  .tasting-photo {
+    min-height: 300px;
+  }
+  .tasting-content {
+    padding: 18px 13px;
+  }
+  .tasting-heading {
+    font-size: 10px;
+    gap: 5px;
+  }
+  .tasting-content > button > span {
+    font-size: 12px;
+  }
+  .tasting-content strong {
+    font-size: 10px;
+  }
+  .tasting-photo > span {
+    font-size: 10px;
+  }
+  .tasting-content > p {
+    font-size: 9px;
+  }
+  .menu-dialog {
+    width: 96vw;
+    max-height: 93svh;
+  }
+  .menu-dialog .dialog-header {
+    padding: 12px 17px;
+  }
+  .dialog-header h2 {
+    font-size: 17px;
+  }
+  .cafe-menu {
+    display: block;
+  }
+  .menu-editorial {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 100px;
+    gap: 0 15px;
+  }
+  .menu-editorial-top {
+    grid-column: 1/-1;
+    padding-bottom: 10px;
+  }
+  .menu-editorial-top > span {
+    font-size: 24px;
+  }
+  .menu-editorial h3 {
+    font-size: 26px;
+    line-height: 1.7;
+    margin: 14px 0 6px;
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .menu-editorial p {
+    grid-column: 1;
+    grid-row: 3;
+    margin: 0;
+    font-size: 11px;
+  }
+  .menu-editorial-photo {
+    grid-column: 2;
+    grid-row: 2/4;
+    height: 140px;
+    width: 100px;
+    margin: 15px 0 0;
+    border-radius: 60px 60px 6px 6px;
+  }
+  .menu-editorial-foot {
+    display: none;
+  }
+  .menu-browser {
+    padding: 23px 18px;
+  }
+  .menu-intro > span {
+    font-size: 19px;
+  }
+  .menu-intro p {
+    margin-bottom: 17px;
+  }
+  .menu-group-list {
+    gap: 6px;
+  }
+  .menu-group-list button {
+    font-size: 11px;
+    padding: 8px 11px;
+  }
+  .drink {
+    gap: 10px;
+    padding: 18px 0;
+    flex-wrap: wrap;
+  }
+  .drink-description {
+    flex-basis: calc(100% - 48px);
+  }
+  .drink-price {
+    margin-right: 46px;
+    padding-top: 0;
+    font-size: 12px;
+  }
+  .drink-description p {
+    font-size: 12px;
+  }
+  .drink-name h4 {
+    font-size: 15px;
+  }
+  .drink-name > span {
+    font-size: 9px;
+  }
+  .menu-disclaimer {
+    font-size: 10px;
+  }
+  .modal-grid .product-photo {
+    height: 185px;
+  }
+  dialog {
+    padding: 20px;
+  }
+  .dialog-header {
+    top: -20px;
+    margin: -20px -20px 20px;
+    padding: 14px 20px;
+  }
+  .menu-dialog {
+    padding: 0;
+  }
+  .admin-row .button {
+    min-height: 44px;
+  }
+}
+.review-heading {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line, #d9cbbd);
+}
+.menu-result-count {
+  margin: 14px 0 0;
+  font-size: 11px;
+  color: #776355;
+}
+@media (prefers-reduced-motion: reduce) {
+  header nav a:after,
+  header nav button:after,
+  .collection,
+  .tabs button,
+  .menu-group-list button {
+    transition: none;
+  }
+}
