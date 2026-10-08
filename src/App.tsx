@@ -403,6 +403,63 @@ export default function App() {
               </label>
             </div>
           </div>
+          {category === categories[0] && !query && sort === "default" && (
+            <div className="house-selection">
+              <div className="house-copy">
+                <span className="house-stamp">برشته برای روزهای شما</span>
+                <h3>
+                  یک طعم.
+                  <br />
+                  امضای درصد.
+                </h3>
+                <p>
+                  ترکیب روزانه؛ شکلاتی، متعادل و خوش‌عطر.
+                  <br />
+                  برای اولین فنجان صبح و آخرین مکث عصر.
+                </p>
+                <button
+                  className="button copper"
+                  onClick={() =>
+                    openProduct(products.find((p) => p.id === 1) || products[0])
+                  }
+                >
+                  کشف ترکیب روزانه <ArrowUpLeft size={19} />
+                </button>
+                <small>طرح بسته‌بندی و مشخصات، نمونه پیشنهادی هستند.</small>
+              </div>
+              <div
+                className="bag-stage"
+                aria-label="طرح پیشنهادی بسته‌بندی قهوه درصد"
+              >
+                <span className="stage-word" aria-hidden="true">
+                  درصد
+                </span>
+                <div className="coffee-bag">
+                  <div className="bag-seal" />
+                  <span className="bag-brand">
+                    درصد <b>٪</b>
+                  </span>
+                  <span className="bag-window">
+                    <img
+                      src="./images/beans.jpg"
+                      alt="دانه‌های قهوه ترکیب روزانه"
+                    />
+                  </span>
+                  <div className="bag-label">
+                    <strong>ترکیب روزانه</strong>
+                    <span>شکلاتی · متعادل · خوش‌عطر</span>
+                    <small>۲۵۰ گرم / دانه قهوه</small>
+                  </div>
+                  <div className="bag-bottom" />
+                </div>
+                <span className="bag-caption">
+                  از قفسه درصد،
+                  <br />
+                  به گوشه دنج خانه.
+                </span>
+              </div>
+            </div>
+          )}
           <div className="product-grid">{visible.map(card)}</div>
           {!visible.length && (
             <div className="empty">
