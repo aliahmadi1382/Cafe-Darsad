@@ -1,0 +1,798 @@
+/* Darsad's percent identity: coffee + chocolate, joined by a single stroke. */
+:root {
+  --dark: #49251e;
+  --copper: #803e2b;
+  --muted: #786450;
+  color: #49251e;
+  background: #f4eddc;
+}
+header {
+  background: #f4eddc;
+  border-color: #d7c9b2;
+  height: 100px;
+  padding-inline: 5%;
+}
+.announcement {
+  background: #49251e;
+  color: #f4eddc;
+}
+.brand {
+  font-weight: 900;
+  font-size: 36px;
+  gap: 9px;
+}
+.brand-symbol {
+  color: #803e2b;
+  font-weight: 650;
+  font-size: 58px;
+}
+.brand small {
+  font-size: 9px;
+}
+.signature-hero {
+  background: #f4eddc;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 650px;
+  padding: 35px 6% 75px;
+  gap: 20px;
+  overflow: hidden;
+}
+.signature-copy {
+  position: relative;
+  z-index: 1;
+  padding: 10px 0 20px;
+  align-self: center;
+}
+.place-note {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: #755b47;
+}
+.tiny-percent {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #bca586;
+  border-radius: 50%;
+  font-size: 19px;
+}
+.signature-copy h1 {
+  font-size: clamp(44px, 4.75vw, 76px);
+  line-height: 1.65;
+  font-weight: 850;
+  letter-spacing: -2px;
+  margin: 20px 0 22px;
+}
+.headline-last {
+  position: relative;
+  display: inline-block;
+}
+.headline-last:after {
+  content: "";
+  height: 7px;
+  background: #bf7548;
+  position: absolute;
+  bottom: 5px;
+  right: 0;
+  width: 100%;
+  clip-path: polygon(0 25%, 100% 0, 97% 70%, 4% 100%);
+}
+.signature-copy > p {
+  font-size: 14px;
+  line-height: 2.1;
+  color: #76604b;
+  font-weight: 400;
+  margin-bottom: 24px;
+}
+.signature-actions {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.signature-actions .copper {
+  border-radius: 0;
+  background: #49251e;
+  min-height: 56px;
+  padding: 15px 25px;
+  gap: 22px;
+}
+.signature-actions .copper:hover {
+  background: #803e2b;
+}
+.menu-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 0;
+  font-size: 12px;
+  border-bottom: 1px solid #bea88c;
+}
+.signature-caption {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 38px;
+  color: #806c54;
+  font-size: 10px;
+  line-height: 1.9;
+}
+.caption-line {
+  width: 48px;
+  height: 1px;
+  background: #b5a081;
+}
+.signature-art {
+  position: relative;
+  height: 500px;
+  max-width: 620px;
+  width: 100%;
+  align-self: center;
+  direction: ltr;
+  isolation: isolate;
+}
+.art-orbit {
+  position: absolute;
+  inset: 20px 0 20px 5px;
+  border: 1px solid #caba9e;
+  border-radius: 50%;
+  transform: rotate(-15deg);
+}
+.art-orbit:after {
+  content: "";
+  position: absolute;
+  inset: 30px -15px;
+  border: 1px solid #d9ccb6;
+  border-radius: 50%;
+  transform: rotate(24deg);
+}
+.art-disc {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: 0 13px 30px #482d2118;
+  border: 9px solid #f4eddc;
+  z-index: 2;
+}
+.art-disc img {
+  height: 100%;
+  transition: transform 0.6s;
+  filter: saturate(0.8);
+}
+.art-disc:hover img {
+  transform: scale(1.06);
+}
+.art-disc span {
+  z-index: 1;
+  position: absolute;
+  bottom: 25px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #fff;
+  font-size: 11px;
+  text-shadow: 0 1px 8px #000;
+  background: #49251ebf;
+  width: fit-content;
+  margin: auto;
+  padding: 3px 10px;
+}
+.art-disc:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, #20140e60, transparent 50%);
+  pointer-events: none;
+}
+.disc-coffee {
+  width: 290px;
+  height: 290px;
+  left: 0;
+  top: 5px;
+  transform: rotate(-9deg);
+}
+.disc-chocolate {
+  width: 265px;
+  height: 265px;
+  right: 0;
+  bottom: 6px;
+  transform: rotate(8deg);
+}
+.percent-stroke {
+  position: absolute;
+  height: 425px;
+  width: 68px;
+  background: #803e2b;
+  left: 47%;
+  top: 25px;
+  transform: rotate(35deg);
+  border-radius: 50px;
+  z-index: 3;
+  box-shadow: 9px 8px 0 #f4eddc;
+}
+.percent-stroke span {
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  font-size: 28px;
+  font-weight: 750;
+  color: #f4eddc;
+  white-space: nowrap;
+}
+.art-scribble {
+  position: absolute;
+  top: 38px;
+  right: 5px;
+  transform: rotate(12deg);
+  font-size: 14px;
+  direction: rtl;
+  color: #8c6348;
+  border-bottom: 1px solid #b89d7e;
+  padding-bottom: 8px;
+}
+.hero-bottom-note {
+  position: absolute;
+  bottom: 20px;
+  right: 6%;
+  left: 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #d8cbb4;
+  padding-top: 18px;
+  font-size: 11px;
+  color: #7b604a;
+}
+.hero-bottom-note a {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.values {
+  background: #803e2b;
+  color: #fff2de;
+  border: 0;
+  padding: 22px 5%;
+  gap: 8%;
+}
+.values svg {
+  color: #efd1a4;
+}
+.section {
+  padding-top: 85px;
+  padding-bottom: 85px;
+}
+.eyebrow {
+  color: #8a5d3c;
+}
+.section-heading h2 {
+  font-size: 32px;
+  font-weight: 750;
+  letter-spacing: -0.8px;
+}
+.section-heading {
+  margin-bottom: 38px;
+}
+.section-heading a {
+  border-bottom: 1px solid #a98e70;
+  padding-bottom: 9px;
+}
+.collection-grid {
+  grid-template-columns: 1.2fr 0.85fr 0.85fr;
+  gap: 24px;
+  align-items: start;
+}
+.collection {
+  height: 350px;
+  border-radius: 180px 180px 0 0;
+  background: #493026;
+}
+.collection:nth-child(2) {
+  margin-top: 62px;
+  height: 300px;
+  border-radius: 0;
+}
+.collection:nth-child(3) {
+  margin-top: 24px;
+  height: 320px;
+  border-radius: 0 0 150px 150px;
+}
+.collection:after {
+  background: linear-gradient(0deg, #2a170edf, transparent 80%);
+}
+.collection h3 {
+  font-size: 32px;
+  font-weight: 750;
+}
+.collection > div {
+  right: 25px;
+  bottom: 30px;
+}
+.collection small {
+  font-size: 11px;
+}
+.collection > span {
+  width: 38px;
+  height: 38px;
+  bottom: 34px;
+}
+.shop {
+  background: #fbf9f2;
+  border-top: 1px solid #d8cbb4;
+  border-bottom: 1px solid #d8cbb4;
+  max-width: none;
+  padding-inline: max(6%, calc((100% - 1240px) / 2));
+}
+.tabs button {
+  border-radius: 0;
+  padding-inline: 21px;
+}
+.product-photo {
+  border-radius: 0;
+  height: 310px;
+}
+.product-photo:before {
+  content: "درصد";
+  position: absolute;
+  left: 14px;
+  bottom: 12px;
+  color: #fff9e6;
+  font-size: 15px;
+  z-index: 1;
+  pointer-events: none;
+  text-shadow: 0 1px 8px #20140e;
+}
+.product-title {
+  font-weight: 700;
+}
+.tag {
+  border-radius: 0;
+}
+.favorite {
+  border-radius: 0;
+}
+.product-bottom {
+  border-top: 1px solid #cfbeaa;
+}
+.add {
+  border-radius: 0;
+  border-color: #b69a7c;
+}
+.product-category {
+  font-size: 10px;
+}
+.product-grid {
+  gap: 42px 28px;
+}
+.story {
+  background: #49251e;
+  color: #f4eddc;
+  margin: 0;
+  grid-template-columns: 1.05fr 1fr;
+  padding: 65px 6%;
+  gap: 65px;
+}
+.story-image {
+  min-height: 480px;
+  overflow: hidden;
+  border-radius: 240px 240px 0 0;
+}
+.story-image img {
+  filter: saturate(0.7);
+}
+.story-image span {
+  right: 20px;
+  bottom: 20px;
+  background: #49251ea8;
+  font-size: 11px;
+}
+.story-content {
+  padding: 35px 0;
+  align-self: center;
+}
+.story-content .eyebrow {
+  color: #c7a786;
+}
+.story-content h2 {
+  font-size: 37px;
+  font-weight: 750;
+  line-height: 1.8;
+  letter-spacing: -1px;
+}
+.story-content p {
+  color: #d5beaa;
+  font-size: 13px;
+  max-width: 440px;
+}
+.story-content a {
+  color: #efd1a4;
+  border-bottom: 1px solid #987154;
+  width: fit-content;
+  padding-bottom: 12px;
+}
+.menu-preview {
+  background: #f4eddc;
+}
+.menu-preview h2 {
+  font-weight: 750;
+}
+.menu-lines > div {
+  border-color: #cdbc9f;
+}
+.visit {
+  background: #ded0b5;
+  color: #49251e;
+}
+.visit p {
+  color: #6b4c35;
+}
+.visit .outline {
+  border-color: #856449;
+  color: #49251e;
+}
+.visit small {
+  color: #71553f;
+}
+.visit-mark {
+  font-weight: 650;
+  color: #a0845950;
+}
+.visit h2 {
+  font-weight: 750;
+}
+footer {
+  background: #f4eddc;
+}
+.icon:hover {
+  background: #e5d7bf;
+}
+.button {
+  border-radius: 0;
+}
+.notice {
+  background: #eee1c9;
+}
+dialog {
+  background: #fbf8ef;
+  border-radius: 0;
+}
+@media (min-width: 1500px) {
+  .signature-hero {
+    padding-inline: 10%;
+    gap: 80px;
+  }
+  .signature-copy h1 {
+    font-size: 78px;
+  }
+  .signature-art {
+    height: 600px;
+  }
+  .disc-coffee {
+    width: 320px;
+    height: 320px;
+  }
+  .disc-chocolate {
+    width: 290px;
+    height: 290px;
+  }
+  .percent-stroke {
+    height: 490px;
+  }
+}
+@media (max-width: 1050px) {
+  .signature-hero {
+    padding-inline: 5%;
+    min-height: 650px;
+    gap: 15px;
+  }
+  .signature-copy h1 {
+    font-size: 49px;
+  }
+  .signature-art {
+    height: 450px;
+  }
+  .disc-coffee {
+    width: 230px;
+    height: 230px;
+  }
+  .disc-chocolate {
+    width: 210px;
+    height: 210px;
+  }
+  .percent-stroke {
+    height: 370px;
+    width: 57px;
+    top: 35px;
+  }
+  .art-scribble {
+    font-size: 11px;
+    right: 0;
+    top: 12px;
+  }
+  .signature-caption {
+    font-size: 9px;
+  }
+  .signature-actions {
+    gap: 15px;
+  }
+  .signature-actions .copper {
+    padding: 13px 17px;
+    font-size: 12px;
+  }
+  .collection-grid {
+    gap: 18px;
+  }
+  .collection {
+    height: 300px;
+  }
+  .collection:nth-child(2) {
+    height: 265px;
+  }
+  .collection:nth-child(3) {
+    height: 280px;
+  }
+  .story {
+    gap: 35px;
+  }
+  .story-content h2 {
+    font-size: 29px;
+  }
+}
+@media (max-width: 740px) {
+  header {
+    height: 80px;
+  }
+  .brand {
+    font-size: 28px;
+  }
+  .brand-symbol {
+    font-size: 46px;
+  }
+  .signature-hero {
+    grid-template-columns: 1fr;
+    padding: 30px 7% 75px;
+    gap: 8px;
+  }
+  .signature-copy {
+    padding: 0;
+    align-self: start;
+  }
+  .place-note {
+    font-size: 10px;
+  }
+  .tiny-percent {
+    width: 24px;
+    height: 24px;
+    font-size: 16px;
+  }
+  .signature-copy h1 {
+    font-size: clamp(37px, 7.3vw, 50px);
+    line-height: 1.65;
+    letter-spacing: -1.4px;
+    margin: 18px 0;
+    white-space: nowrap;
+  }
+  .signature-copy > p {
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+  .signature-actions {
+    gap: 22px;
+  }
+  .signature-actions .copper {
+    min-height: 48px;
+  }
+  .menu-link {
+    font-size: 11px;
+  }
+  .signature-caption {
+    display: none;
+  }
+  .signature-art {
+    height: 390px;
+    max-width: 430px;
+    margin: 12px auto 0;
+  }
+  .disc-coffee {
+    width: 205px;
+    height: 205px;
+    top: 5px;
+    left: 0;
+  }
+  .disc-chocolate {
+    width: 190px;
+    height: 190px;
+    bottom: 5px;
+    right: 0;
+  }
+  .percent-stroke {
+    height: 320px;
+    width: 53px;
+    top: 38px;
+    left: 45%;
+  }
+  .percent-stroke span {
+    font-size: 24px;
+  }
+  .art-scribble {
+    right: 0;
+    top: 18px;
+    font-size: 10px;
+  }
+  .art-disc {
+    border-width: 7px;
+  }
+  .art-disc span {
+    font-size: 9px;
+    bottom: 17px;
+  }
+  .art-orbit {
+    inset: 18px 0;
+  }
+  .hero-bottom-note {
+    right: 7%;
+    left: 7%;
+    font-size: 9px;
+    bottom: 17px;
+    gap: 15px;
+  }
+  .hero-bottom-note a {
+    gap: 7px;
+    white-space: nowrap;
+  }
+  .values {
+    gap: 20px;
+    padding: 18px;
+  }
+  .values span {
+    font-size: 10px;
+  }
+  .section {
+    padding: 50px 6%;
+  }
+  .section-heading h2 {
+    font-size: 25px;
+  }
+  .section-heading {
+    gap: 15px;
+    margin-bottom: 28px;
+  }
+  .collection-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .collection {
+    height: 300px;
+    grid-column: 1/-1;
+    border-radius: 160px 160px 0 0;
+    max-width: 100%;
+  }
+  .collection:nth-child(2) {
+    grid-column: auto;
+    margin-top: 0;
+    height: 245px;
+    border-radius: 0;
+  }
+  .collection:nth-child(3) {
+    grid-column: auto;
+    margin-top: 32px;
+    height: 245px;
+    border-radius: 0 0 90px 90px;
+  }
+  .collection > div {
+    right: 15px;
+    bottom: 28px;
+  }
+  .collection h3 {
+    font-size: 24px;
+  }
+  .collection:nth-child(3) h3 {
+    font-size: 19px;
+  }
+  .collection small {
+    font-size: 9px;
+  }
+  .collection > span {
+    left: 15px;
+    bottom: 15px;
+    width: 28px;
+    height: 28px;
+  }
+  .collection > span svg {
+    width: 17px;
+  }
+  .collection:nth-child(2) > div,
+  .collection:nth-child(3) > div {
+    bottom: 55px;
+  }
+  .collection:nth-child(3) > span {
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .product-photo {
+    height: 210px;
+  }
+  .product-grid {
+    gap: 30px 15px;
+  }
+  .product-photo:before {
+    font-size: 12px;
+    left: 10px;
+    bottom: 8px;
+  }
+  .tabs button {
+    padding-inline: 12px;
+  }
+  .story {
+    grid-template-columns: 1fr;
+    padding: 45px 7%;
+    gap: 20px;
+  }
+  .story-image {
+    min-height: 360px;
+  }
+  .story-content {
+    padding: 10px 0;
+  }
+  .story-content h2 {
+    font-size: 30px;
+  }
+  .story-content p {
+    font-size: 12px;
+  }
+  .visit {
+    padding: 45px 7%;
+  }
+  .visit-mark {
+    color: #8b673a35;
+  }
+  .modal-grid .product-photo {
+    height: 190px;
+  }
+}
+@media (max-width: 390px) {
+  .signature-copy h1 {
+    font-size: 36px;
+  }
+  .signature-copy h1 br:nth-of-type(1) {
+    display: block;
+  }
+  .signature-art {
+    height: 350px;
+  }
+  .disc-coffee {
+    width: 185px;
+    height: 185px;
+  }
+  .disc-chocolate {
+    width: 170px;
+    height: 170px;
+  }
+  .percent-stroke {
+    height: 295px;
+    width: 47px;
+    top: 25px;
+  }
+  .signature-actions {
+    gap: 14px;
+  }
+  .product-photo {
+    height: 185px;
+  }
+  .hero-bottom-note > span {
+    max-width: 130px;
+    line-height: 1.8;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .art-disc img {
+    transition: none;
+  }
+}

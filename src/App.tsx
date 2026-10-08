@@ -204,50 +204,73 @@ export default function App() {
         </div>
       </header>
       <main id="main">
-        <section className="hero">
-          <img
-            className="hero-image"
-            src="./images/hero.jpg"
-            alt="دم‌آوری دستی قهوه با کتری در فضای کافه"
-          />
-          <div className="hero-shade" />
-          <div className="hero-content">
-            <span className="hero-eyebrow">
-              <span />
-              یک مکث خوش‌عطر در شلوغی تهران
-            </span>
+        <section className="signature-hero">
+          <div className="signature-copy">
+            <div className="place-note">
+              <span className="tiny-percent">٪</span> یک کافه، حوالی پارک پلیس.
+            </div>
             <h1>
-              حال خوب،
+              کمی قهوه.
               <br />
-              به اندازه یک <em>فنجان.</em>
+              کمی شکلات.
+              <br />
+              <span className="headline-last">تمامِ حال خوب.</span>
             </h1>
             <p>
-              قهوه‌ای که دوستش دارید، شکلاتی که کشفش می‌کنید
-              <br />و جایی که دلتان می‌خواهد کمی بیشتر بمانید.
+              بعضی چیزها را نمی‌شود اندازه گرفت.
+              <br />
+              مثل عطر قهوه، لذت شکلات، یا یک قرار بی‌عجله.
             </p>
-            <div className="hero-buttons">
+            <div className="signature-actions">
               <a className="button copper" href="#shop">
-                کشف فروشگاه <ArrowLeft size={19} />
+                طعم خودت را پیدا کن <ArrowLeft size={19} />
               </a>
-              <button
-                className="button outline"
-                onClick={() => setPanel("menu")}
-              >
-                منوی کافه <Coffee size={19} />
+              <button className="menu-link" onClick={() => setPanel("menu")}>
+                امروز در کافه <ArrowUpLeft size={19} />
               </button>
             </div>
-            <div className="hero-foot">
-              <MapPin size={17} /> تهران، روبه‌روی پارک پلیس
+            <div className="signature-caption">
+              <span>
+                از دانه تا فنجان،
+                <br />
+                از درصد تا شما.
+              </span>
+              <span className="caption-line" />
+              <span>قهوه · شکلات · تجهیزات</span>
             </div>
           </div>
-          <div className="hero-stamp">
-            <span>با عشق،</span>
-            <strong>درصد</strong>
-            <small>برای لحظه‌های شما</small>
+          <div
+            className="signature-art"
+            aria-label="نشان درصد با ترکیب تصاویر قهوه و شکلات"
+          >
+            <div className="art-orbit" aria-hidden="true" />
+            <div className="art-disc disc-coffee">
+              <img
+                src="./images/coffee.jpg"
+                alt="فنجان قهوه، نیمه اول نشان درصد"
+              />
+              <span>یک جرعه آرامش</span>
+            </div>
+            <div className="percent-stroke" aria-hidden="true">
+              <span>درصد</span>
+            </div>
+            <div className="art-disc disc-chocolate">
+              <img
+                src="./images/chocolate.jpg"
+                alt="تکه‌های شکلات، نیمه دوم نشان درصد"
+              />
+              <span>یک تکه خوشحالی</span>
+            </div>
+            <span className="art-scribble" aria-hidden="true">
+              برای تو، با عشق.
+            </span>
           </div>
-          <a className="scroll-hint" href="#collections">
-            کمی بیشتر کشف کنید <ArrowLeft size={17} />
-          </a>
+          <div className="hero-bottom-note">
+            <span>درصدی از روزت را برای خودت نگه دار.</span>
+            <a href="#collections">
+              پایین‌تر، خوش‌طعم‌تر <ArrowLeft size={17} />
+            </a>
+          </div>
         </section>
         <section className="values">
           <span>
@@ -263,8 +286,8 @@ export default function App() {
         <section id="collections" className="section collections">
           <div className="section-heading">
             <div>
-              <span className="eyebrow">دنیای کوچک درصد</span>
-              <h2>هر سلیقه، یک انتخاب خوش‌طعم</h2>
+              <span className="eyebrow">انتخاب با شما، وسواس با ما.</span>
+              <h2>سه بهانه برای یک حال خوب.</h2>
             </div>
             <a href="#shop">
               همه محصولات <ArrowLeft size={18} />
