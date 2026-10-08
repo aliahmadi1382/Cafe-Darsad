@@ -18,6 +18,7 @@ import {
 import { products as initial, categories, menu, money, Product } from "./data";
 import CafeMenu from "./components/CafeMenu";
 import CinematicHero from "./components/CinematicHero";
+import ScrollCoffee from "./components/ScrollCoffee";
 import CoffeeFinder from "./components/CoffeeFinder";
 import ShopNavigation from "./components/ShopNavigation";
 function read<T>(key: string, fallback: T): T {
@@ -259,6 +260,7 @@ export default function App() {
           }}
           onMenu={() => setPanel("menu")}
         />
+        <ScrollCoffee />
         <section className="values">
           <span>
             <Coffee /> قهوه برای هر سلیقه
